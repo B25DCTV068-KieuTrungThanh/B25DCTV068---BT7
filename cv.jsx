@@ -68,3 +68,52 @@ function SkillList({ skills }) {
 }
 
 export default SkillList;
+
+function ProjectCard({ name, description, tech, link }) {
+  return (
+    <div className="project">
+      <h3>{name}</h3>
+      <p>{description}</p>
+      <div>
+        {tech.map((t) => (
+          <span className="tag" key={t}>
+            {t}
+          </span>
+        ))}
+      </div>
+      {link ? (
+        <a href={link} target="_blank" rel="noreferrer">
+          Xem mã nguồn
+        </a>
+      ) : null}
+    </div>
+  );
+}
+
+export default ProjectCard;
+
+import ProjectCard from "./ProjectCard";
+
+function ProjectList({ items }) {
+  return (
+    <div>
+      {items.map((p) => (
+        <ProjectCard
+          key={p.id}
+          name={p.name}
+          description={p.description}
+          tech={p.tech}
+          link={p.link}
+        />
+      ))}
+    </div>
+  );
+}
+
+export default ProjectList;
+
+function Footer({ name }) {
+  return <footer className="footer">© 2026 {name}</footer>;
+}
+
+export default Footer;
